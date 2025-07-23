@@ -1,0 +1,470 @@
+【 2025.07.23 】
+
+[PCCE 기출문제] 1번 / 출력 (빈칸 채우기 문제)
+
+<<< 출력 예시 >>>
+
+Spring is beginning
+13
+310
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        String msg = "Spring is beginning";
+        int val1 = 3;
+        String val2 = "3";
+
+        System.out.println(msg);
+        System.out.println(val1 + 10);
+        System.out.println(val2 + "10");
+    }
+}
+
+(큰 따옴표를 안 해서 오류났었다)
+
+==================================================
+
+[PCCE 기출문제] 2번 / 피타고라스의 정리 (디버깅 문제)
+
+<<< 제한사항 >>>
+
+1 ≤ a < c ≤ 100
+
+<<< 입출력 예 >>>
+
+입력 #1
+3
+5
+
+출력 #1
+16
+
+입력 #2
+9
+10
+
+출력 #2
+19
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+a2 = 9, c2 = 25 이므로 16을 출력합니다.
+
+입출력 예 #2
+a2 = 81, c2 = 100 이므로 19를 출력합니다.
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int c = sc.nextInt();
+
+        int b_square = c * c - a * a;
+
+        System.out.println(b_square);
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int c = sc.nextInt();
+
+        int b_square = (c - a) * (c + a);
+
+        System.out.println(b_square);
+    }
+}
+
+(제한사항을 보지 않아서 절댓값 어떻게 주는지 고민했던 문제)
+
+(다른 사람의 풀이 중 오랜만에 보는 c 의 제곱에서 a 의 제곱을 빼는 곱셈 공식 코드가 있어서 가져왔는데 오히려 가독성은 떨어지는 듯)
+
+==================================================
+
+[PCCE 기출문제] 3번 / 나이 계산 (빈칸 채우기 문제)
+
+<<< 입출력 예 >>>
+
+입력 #1
+2000
+Korea
+
+출력 #1
+31
+
+입력 #2
+1999
+Year
+
+출력 #2
+31
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+2030년에 2000년생의 한국식 나이는 2030 - 2000 + 1 = 31살입니다.
+
+입출력 예 #2
+2030년에 1999년생의 연 나이는 2030 - 1999 = 31살입니다.
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        String age_type = sc.next();
+        int answer = 0;
+
+        if (age_type.equals("Korea")) {
+            answer = 2030 - year + 1;
+        }
+        else if (age_type.equals("Year")) {
+            answer = 2030 - year;
+        }
+
+        System.out.println(answer);
+    }
+}
+
+(2030년 기준인 걸 안 보고 answer = year + 1; 처럼 적어서 틀렸었다)
+
+==================================================
+
+[PCCE 기출문제] 4번 / 저축 (빈칸 채우기 문제)
+
+<<< 입출력 예 >>>
+
+입력 #1
+28
+6
+8
+
+출력 #1
+12
+
+입력 #2
+75
+8
+25
+
+출력 #2
+2
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+매월 저축된 금액은 아래 표와 같습니다. 따라서 12를 출력합니다.
+1	2	3	4	5	6	7	8	9	10	11	12
+28	34	40	46	52	58	64	70	78	86	94	102
+
+입출력 예 #2
+첫 달 저축된 금액이 70이 넘으므로 두 번째 달부터 바로 after= 25 만큼 저축합니다. 따라서 2를 출력합니다.
+1	2
+75	100
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int start = sc.nextInt();
+        int before = sc.nextInt();
+        int after = sc.nextInt();
+
+        int money = start;
+        int month = 1;
+        while (money < 70) {
+            money += before;
+            month++;
+        }
+        while (money < 100) {
+            money += after;
+            month++;
+        }
+
+        System.out.println(month);
+    }
+}
+
+(힌트가 너무 많았던 문제)
+
+==================================================
+
+[PCCE 기출문제] 5번 / 산책 (빈칸 채우기 문제)
+
+<<< 입출력 예 >>>
+
+route	result
+"NSSNEWWN"	[-1, 1]
+"EESEEWNWSNWWNS"	[0, 0]
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+"NSSNEWWN" 순서대로 움직이면 서쪽으로 1, 북쪽으로 1만큼 떨어진 곳에 도착하게 되므로 [-1, 1]을 return합니다.
+
+입출력 예 #2
+"EESEEWNWSNWWNS" 순서대로 움직이면 출발지와 같은 곳으로 돌아오므로 [0, 0]을 return합니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int[] solution(String route) {
+        int east = 0;
+        int north = 0;
+        int[] answer = new int [2];
+        for(int i=0; i<route.length(); i++){
+            switch(route.charAt(i)){
+                case 'N':
+                    north++;
+                    break;
+                case 'S':
+                    north--;
+                    break;
+                case 'E':
+                    east++;
+                    break;
+                case 'W':
+                    east--;
+                    break;
+            }
+        }
+        answer[0] = east;
+        answer[1] = north;
+        return answer;
+    }
+}
+
+(계속 1점만 오르는 이유가 코드 실행 버튼을 눌러서 그런 것 같아서 제출 후 채점하기 버튼을 바로 눌렀던 문제)
+
+==================================================
+
+[PCCE 기출문제] 6번 / 가채점 (디버깅 문제)
+
+<<< 입출력 예 >>>
+
+numbers	our_score	score_list	result
+[1]	[100]	[100, 80, 90, 84, 20]	["Same"]
+[3, 4]	[85, 93]	[85, 92, 38, 93, 48, 85, 92, 56]	["Different", "Same"]
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+1번 학생이 가채점한 성적은 100점으로 실제 성적과 같기 때문에 "Same"을 담아 return합니다.
+
+입출력 예 #2
+3번 학생이 가채점한 성적은 85점으로 실제 성적 38점과 다르기 때문에 "Different"를, 4번 학생이 채점한 성적은 93점으로 실제 성적과 같기 때문에 "Same"을 담아 return합니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String[] solution(int[] numbers, int[] our_score, int[] score_list) {
+        int num_student = numbers.length;
+        String[] answer = new String[num_student];
+
+        for (int i = 0; i < num_student; i++) {
+            if (our_score[i] == score_list[numbers[i]-1]) {
+                answer[i] = "Same";
+            }
+            else {
+                answer[i] = "Different";
+            }
+        }
+
+        return answer;
+    }
+}
+
+(타입 생각 안 하고 score_list[numbers] 처럼 넣었다가 틀렸던 문제)
+
+==================================================
+
+[PCCE 기출문제] 7번 / 가습기 (빈칸 채우기 문제)
+
+<<< 입출력 예 >>>
+
+mode_type	humidity	val_set	result
+"auto"	23	45	3
+"target"	41	40	1
+"minimum"	10	34	1
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+"auto"모드이므로 습도에 따라 가습량이 조절됩니다. 현재 습도가 20 이상 30 미만이므로 3을 return합니다.
+
+입출력 예 #2
+"target"모드이고, 설정값보다 습도가 높으므로 1을 return합니다.
+
+입출력 예 #3
+"minimum"모드이고, 설정값보다 습도가 낮으므로 1을 return합니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int func1(int humidity, int val_set){
+        if(humidity < val_set)
+            return 3;
+        return 1;
+    }
+
+    public int func2(int humidity){
+        if(humidity >= 50)
+            return 0;
+        else if (humidity >= 40)
+            return 1;
+        else if (humidity >= 30)
+            return 2;
+        else if (humidity >= 20)
+            return 3;
+        else if (humidity >= 10)
+            return 4;
+        else
+            return 5;
+    }
+
+    public int func3(int humidity, int val_set){
+        if(humidity < val_set)
+            return 1;
+        return 0;
+    }
+
+    public int solution(String mode_type, int humidity, int val_set) {
+        int answer = 0;
+
+        if(mode_type.equals("auto")){
+            answer = func2(humidity);
+        }
+        else if(mode_type.equals("target")){
+            answer = func1(humidity, val_set);
+        }
+        else if(mode_type.equals("minimum")){
+            answer = func3(humidity, val_set);
+        }
+
+        return answer;
+    }
+}
+
+(각각의 메소드가 어떤 인자를 갖는지, 어떤 값을 반환하는지 맞히는 문제)
+
+==================================================
+
+[PCCE 기출문제] 8번 / 창고 정리 (디버깅 문제)
+
+<<< 제한사항 >>>
+
+1 ≤ storage의 길이 = num의 길이 ≤ 30
+storage[i]는 영어 대소문자로 이루어져 있습니다.
+물건은 대소문자를 구분합니다. 즉, "Book"과 "book"은 서로 다른 물건입니다.
+1 ≤ storage[i]의 길이 ≤ 30
+1 ≤ num[i] ≤ 20
+num[i]에는 storage[i]에 해당하는 물건의 개수가 담겨있습니다.
+가장 개수가 많은 물건이 두 가지 이상인 경우는 없습니다.
+한 칸에는 한 종류의 물건만 들어갈 수 있습니다.
+
+<<< 입출력 예 >>>
+
+storage	num	result
+["pencil", "pencil", "pencil", "book"]	[2, 4, 3, 1]	"pencil"
+["doll", "doll", "doll", "doll"]	[1, 1, 1, 1]	"doll"
+["apple", "steel", "leaf", "apple", "leaf"]	[5, 3, 5, 3, 7]	"leaf"
+["mirror", "net", "mirror", "net", "bottle"]	[4, 1, 4, 1, 5]	"mirror"
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+본문에 설명된 대로 창고를 정리하면 clean_storage = ["pencil", "book"], clean_num = [9, 1]이 됩니다. 따라서 가장 개수가 많은 물건인 "pencil"을 return합니다.
+
+입출력 예 #2
+창고를 정리하면 clean_storage = ["doll"], clean_num = [4]가 됩니다. 따라서 가장 개수가 많은 물건인 "doll"을 return합니다.
+
+입출력 예 #3
+창고를 정리하면 clean_storage = ["apple", "steel", "leaf"], clean_num = [8, 3, 12]가 됩니다. 따라서 가장 개수가 많은 물건인 "leaf"를 return합니다.
+
+입출력 예 #4
+창고를 정리하면 clean_storage = ["mirror", "net", "bottle"], clean_num = [8, 2, 5]가 됩니다. 따라서 가장 개수가 많은 물건인 "mirror"를 return합니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(String[] storage, int[] num) {
+        int num_item = 0;
+        String[] clean_storage = new String[storage.length];
+        int[] clean_num = new int[num.length];
+        
+        for(int i=0; i<storage.length; i++){
+            int clean_idx = -1;
+            for(int j=0; j<num_item; j++){
+                if(storage[i].equals(clean_storage[j])){
+                    clean_idx = j;
+                    break;
+                }
+            }
+            if(clean_idx == -1){
+                clean_storage[num_item] = storage[i];
+                clean_num[num_item] = num[i];
+                num_item += 1;
+            }
+            else{
+                clean_num[clean_idx] += num[i];
+            }
+        }
+        
+        // 아래 코드에는 틀린 부분이 없습니다.
+        
+        int num_max = -1;
+        String answer = "";
+        for(int i=0; i<num_item; i++){
+            if(clean_num[i] > num_max){
+                num_max = clean_num[i];
+                answer = clean_storage[i];
+            }
+        }
+        return answer;
+    }
+}
+
+(한눈에 코드의 내용이 안 들어와서 시간이 걸린 문제)
+
+(조급해하지 않고 위에서부터 천천히 보니까 어디가 틀렸는지 확실히 발견했다)
+
+(다른 사람의 풀이에는 제한사항을 안 보고 Null 체크를 하거나, 아래 코드는 틀린 부분이 없다고 했음에도 아래에 코드를 추가한 풀이 등이 있었다)
