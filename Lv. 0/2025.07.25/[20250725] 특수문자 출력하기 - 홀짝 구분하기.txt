@@ -1,0 +1,191 @@
+【 2025.07.25 】
+
+특수문자 출력하기
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        System.out.print("!@#$%^&*(\\\'\"<>?:;");
+    }
+}
+
+("" 를 `` 로도 써보고 "" + "" 처럼 나눠도 보다가 위처럼 코딩했다)
+
+==================================================
+
+덧셈식 출력하기
+
+<<< 입출력 예 >>>
+
+입력 #1
+4 5
+
+출력 #1
+4 + 5 = 9
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a + " + " + b + " = " + (a + b));
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.printf("%d + %d = %d",a,b,a+b);
+    }
+}
+
+(%d 오랜만에 봐서 가져와봤다)
+
+==================================================
+
+문자열 붙여서 출력하기
+
+<<< 입출력 예 >>>
+
+입력 #1
+apple pen
+
+출력 #1
+applepen
+
+입력 #2
+Hello World!
+
+출력 #2
+HelloWorld!
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String b = sc.next();
+        
+        System.out.println(a + b);
+    }
+}
+
+(다른 사람의 풀이 중 concat() 을 쓴 코드도 있었다)
+
+==================================================
+
+문자열 돌리기
+
+<<< 입출력 예 >>>
+
+입력 #1
+abcde
+
+출력 #1
+a
+b
+c
+d
+e
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        
+        String[] b = new String[a.length()];
+        
+        for(int i = 0; i < b.length; i++) {
+            char c = a.charAt(i);
+            System.out.println(c);
+        }
+    }
+}
+
+(어제 썼던 코드 중에 charAt() 을 활용해서 코딩했다)
+
+==================================================
+
+홀짝 구분하기
+
+<<< 입출력 예 >>>
+
+입력 #1
+100
+
+출력 #1
+100 is even
+
+입력 #2
+1
+
+출력 #2
+1 is odd
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        if(n % 2 == 0) {
+            System.out.println(n + " is even");
+        } else {
+            System.out.println(n + " is odd");
+        }
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        System.out.print(n + " is "+(n % 2 == 0 ? "even" : "odd"));
+
+
+    }
+}
+
+(삼항연산자 사용한 코드가 있어서 가져와봤다)
