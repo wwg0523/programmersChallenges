@@ -1,0 +1,172 @@
+【 2025.07.26 】
+
+문자열 겹쳐쓰기
+
+<<< 제한사항 >>>
+
+my_string와 overwrite_string은 숫자와 알파벳으로 이루어져 있습니다.
+1 ≤ overwrite_string의 길이 ≤ my_string의 길이 ≤ 1,000
+0 ≤ s ≤ my_string의 길이 - overwrite_string의 길이
+
+<<< 입출력 예 >>>
+
+my_string	overwrite_string	s	result
+"He11oWor1d"	"lloWorl"	2	"HelloWorld"
+"Program29b8UYP"	"merS123"	7	"ProgrammerS123"
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+예제 1번의 my_string에서 인덱스 2부터 overwrite_string의 길이만큼에 해당하는 부분은 "11oWor1"이고 이를 "lloWorl"로 바꾼 "HelloWorld"를 return 합니다.
+
+입출력 예 #2
+예제 2번의 my_string에서 인덱스 7부터 overwrite_string의 길이만큼에 해당하는 부분은 "29b8UYP"이고 이를 "merS123"로 바꾼 "ProgrammerS123"를 return 합니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(String my_string, String overwrite_string, int s) {
+        String answer = my_string.substring(0, s) + overwrite_string + my_string.substring(s + overwrite_string.length());
+        return answer;
+    }
+}
+
+(어제 10문제 풀려고 하다가 이 문제에서 막혀서 5문제만 풀었다)
+
+(my_string.substring(s + overwrite_string.length(), my_string.length()) 처럼 썼었다가 다른 사람의 풀이를 보고 디폴트가 전체인 걸 알았다)
+
+==================================================
+
+문자열 섞기
+
+<<< 제한사항 >>>
+
+1 ≤ str1의 길이 = str2의 길이 ≤ 10
+str1과 str2는 알파벳 소문자로 이루어진 문자열입니다.
+
+<<< 입출력 예 >>>
+
+str1	str2	result
+"aaaaa"	"bbbbb"	"ababababab"
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(String str1, String str2) {
+        String a = "";
+        for(int i = 0; i < str1.length(); i++) {
+            a += str1.substring(i, i+1) + str2.substring(i, i+1);
+        }
+        String answer = a;
+        return answer;
+    }
+}
+
+(제한사항을 안 보고 str1 과 str2 의 길이를 비교할 뻔했다)
+
+==================================================
+
+문자 리스트를 문자열로 변환하기
+
+<<< 입출력 예 >>>
+
+arr	result
+["a","b","c"]	"abc"
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(String[] arr) {
+        String a = "";
+        for(int i = 0; i < arr.length; i++) {
+            a += arr[i];
+        }
+        String answer = a;
+        return answer;
+    }
+}
+
+(이전 문제와 매우 비슷한 느낌)
+
+==================================================
+
+문자열 곱하기
+
+<<< 입출력 예 >>>
+
+my_string	k	result
+"string"	3	"stringstringstring"
+"love"	10	"lovelovelovelovelovelovelovelovelovelove"
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(String my_string, int k) {
+        String answer = my_string.repeat(k);
+        return answer;
+    }
+}
+
+(이전 문제 중에 repeat() 을 쓴 다른 사람의 풀이를 본 기억이 있어서 사용했다)
+
+==================================================
+
+더 크게 합치기
+
+<<< 문제 설명 >>>
+
+연산 ⊕는 두 정수에 대한 연산으로 두 정수를 붙여서 쓴 값을 반환합니다. 예를 들면 다음과 같습니다.
+
+12 ⊕ 3 = 123
+3 ⊕ 12 = 312
+양의 정수 a와 b가 주어졌을 때, a ⊕ b와 b ⊕ a 중 더 큰 값을 return 하는 solution 함수를 완성해 주세요.
+
+단, a ⊕ b와 b ⊕ a가 같다면 a ⊕ b를 return 합니다.
+
+<<< 제한사항 >>>
+
+1 ≤ a, b < 10,000
+
+<<< 입출력 예 >>>
+
+a	b	result
+9	91	991
+89	8	898
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int solution(int a, int b) {
+        String a1 = String.valueOf(a);
+        String b1 = String.valueOf(b);
+        int c1 = Integer.parseInt(a1 + b1);
+        int c2 = Integer.parseInt(b1 + a1);
+
+        int answer = c1 < c2 ? c2 : c1;
+        return answer;
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+class Solution {
+    public int solution(int a, int b) {
+        return Math.max(Integer.parseInt(a + "" + b), Integer.parseInt(b + "" + a));
+    }
+}
+
+(문자열을 숫자로 바꾸는 법을 까먹어서 검색했다)
+
+(다른 사람의 풀이는 Math.max() 와 숫자를 합칠 때 a + "" + b 처럼 하는 걸 가져와봤다)
