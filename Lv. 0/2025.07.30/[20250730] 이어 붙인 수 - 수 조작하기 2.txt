@@ -1,0 +1,227 @@
+【 2025.07.30 】
+
+이어 붙인 수
+
+<<< 문제 설명 >>>
+
+정수가 담긴 리스트 num_list가 주어집니다. num_list의 홀수만 순서대로 이어 붙인 수와 짝수만 순서대로 이어 붙인 수의 합을 return하도록 solution 함수를 완성해주세요.
+
+<<< 제한사항 >>>
+
+2 ≤ num_list의 길이 ≤ 10
+1 ≤ num_list의 원소 ≤ 9
+num_list에는 적어도 한 개씩의 짝수와 홀수가 있습니다.
+
+<<< 입출력 예 >>>
+
+num_list	result
+[3, 4, 5, 2, 1]	393
+[5, 7, 8, 3]	581
+
+<<< 입출력 예 설명 >>>
+
+입출력 예 #1
+홀수만 이어 붙인 수는 351이고 짝수만 이어 붙인 수는 42입니다. 두 수의 합은 393입니다.
+
+입출력 예 #2
+홀수만 이어 붙인 수는 573이고 짝수만 이어 붙인 수는 8입니다. 두 수의 합은 581입니다.
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int solution(int[] num_list) {
+        String a = "";
+        String b = "";
+        for(int i = 0; i < num_list.length; i++) {
+            if(num_list[i] % 2 != 0) {
+                a += num_list[i];
+            } else {
+                b += num_list[i];
+            }
+        }
+        int answer = Integer.parseInt(a) + Integer.parseInt(b);
+        return answer;
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+class Solution {
+    public int solution(int[] num_list) {
+        int answer = 0;
+
+        int even = 0;
+        int odd = 0;
+
+        for(int num : num_list) {
+            if(num % 2 == 0) {
+                even *= 10;
+                even += num;
+            } else {
+                odd *= 10;
+                odd += num;
+            }
+        }
+        answer = even + odd;
+
+        return answer;
+    }
+}
+
+(Integer 는 생각했는데 parseInt() 를 까먹었었다)
+
+(제한사항이 있어서 String 이 아닌 int 로도 가능한 코드를 가져와봤다)
+
+==================================================
+
+마지막 두 원소
+
+<<< 문제 설명 >>>
+
+정수 리스트 num_list가 주어질 때, 마지막 원소가 그전 원소보다 크면 마지막 원소에서 그전 원소를 뺀 값을 마지막 원소가 그전 원소보다 크지 않다면 마지막 원소를 두 배한 값을 추가하여 return하도록 solution 함수를 완성해주세요.
+
+<<< 입출력 예 >>>
+
+num_list	result
+[2, 1, 6]	[2, 1, 6, 5]
+[5, 2, 1, 7, 5]	[5, 2, 1, 7, 5, 10]
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int[] solution(int[] num_list) {
+        int[] answer = new int[num_list.length + 1];
+        for(int i = 0; i < num_list.length; i++) {
+            answer[i] = num_list[i];
+        }
+        if(num_list[num_list.length - 1] > num_list[num_list.length - 2]) {
+            answer[num_list.length] = num_list[num_list.length - 1] - num_list[num_list.length - 2];
+        } else {
+            answer[num_list.length] = num_list[num_list.length - 1] * 2;
+        }
+        return answer;
+    }
+}
+
+(더 좋은 코드가 없을까 다른 사람의 풀이도 찾아봤지만 딱히 없었다)
+
+==================================================
+
+수 조작하기 1
+
+<<< 문제 설명 >>>
+
+정수 n과 문자열 control이 주어집니다. control은 "w", "a", "s", "d"의 4개의 문자로 이루어져 있으며, control의 앞에서부터 순서대로 문자에 따라 n의 값을 바꿉니다.
+
+"w" : n이 1 커집니다.
+"s" : n이 1 작아집니다.
+"d" : n이 10 커집니다.
+"a" : n이 10 작아집니다.
+위 규칙에 따라 n을 바꿨을 때 가장 마지막에 나오는 n의 값을 return 하는 solution 함수를 완성해 주세요.
+
+<<< 입출력 예 >>>
+
+n	control	result
+0	"wsdawsdassw"	-1
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public int solution(int n, String control) {
+        int answer = n;
+        for(int i = 0; i < control.length(); i++) {
+            if("w".equals(control.substring(i, i + 1))) {
+                answer += 1;
+            } else if("s".equals(control.substring(i, i + 1))) {
+                answer -= 1;
+            } else if("d".equals(control.substring(i, i + 1))) {
+                answer += 10;
+            } else {
+                answer -= 10;
+            }
+        }
+        return answer;
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+class Solution {
+    public int solution(int n, String control) {
+        int answer = n;
+
+        for(char ch : control.toCharArray()) {
+            switch(ch) {
+                case 'w': answer += 1; break;
+                case 's': answer -= 1; break;
+                case 'd': answer += 10; break;
+                case 'a': answer -= 10; break;
+                default:break;
+            }
+        }
+
+        return answer;
+    }
+}
+
+(처음에 int answer = 0; 이라고 해서 코드 실행했을 때 전부 틀렸었다)
+
+(어떤 코드가 더 간결하게 보일까 고민했는데 switch문을 아예 까먹고 있어서 가져와봤다)
+
+==================================================
+
+수 조작하기 2
+
+<<< 문제 설명 >>>
+
+정수 배열 numLog가 주어집니다. 처음에 numLog[0]에서 부터 시작해 "w", "a", "s", "d"로 이루어진 문자열을 입력으로 받아 순서대로 다음과 같은 조작을 했다고 합시다.
+
+"w" : 수에 1을 더한다.
+"s" : 수에 1을 뺀다.
+"d" : 수에 10을 더한다.
+"a" : 수에 10을 뺀다.
+그리고 매번 조작을 할 때마다 결괏값을 기록한 정수 배열이 numLog입니다. 즉, numLog[i]는 numLog[0]로부터 총 i번의 조작을 가한 결과가 저장되어 있습니다.
+
+주어진 정수 배열 numLog에 대해 조작을 위해 입력받은 문자열을 return 하는 solution 함수를 완성해 주세요.
+
+<<< 제한사항 >>>
+
+2 ≤ numLog의 길이 ≤ 100,000
+-100,000 ≤ numLog[0] ≤ 100,000
+1 ≤ i ≤ numLog의 길이인 모든 i에 대해 |numLog[i] - numLog[i - 1]|의 값은 1 또는 10입니다.
+
+<<< 입출력 예 >>>
+
+numLog	result
+[0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]	"wsdawsdassw"
+
+
+
+<<< 내 풀이 >>>
+
+class Solution {
+    public String solution(int[] numLog) {
+        String answer = "";
+        for(int i = 0; i < numLog.length - 1; i++) {
+            switch(numLog[i + 1] - numLog[i]) {
+                case 1 : answer += "w"; break;
+                case -1 : answer += "s"; break;
+                case 10 : answer += "d"; break;
+                default : answer += "a"; break;
+            }
+        }
+        return answer;
+    }
+}
+
+(이전 문제에서 본 switch문을 써보겠다고 시도하다가 많은 오류를 경험했다)
