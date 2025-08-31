@@ -62,68 +62,6 @@ class Solution {
 
 ==================================================
 
-조건 문자열
-
-<<< 문제 설명 >>>
-
-문자열에 따라 다음과 같이 두 수의 크기를 비교하려고 합니다.
-
-두 수가 n과 m이라면
-">", "=" : n >= m
-"<", "=" : n <= m
-">", "!" : n > m
-"<", "!" : n < m
-두 문자열 ineq와 eq가 주어집니다. ineq는 "<"와 ">"중 하나고, eq는 "="와 "!"중 하나입니다. 그리고 두 정수 n과 m이 주어질 때, n과 m이 ineq와 eq의 조건에 맞으면 1을 아니면 0을 return하도록 solution 함수를 완성해주세요.
-
-
-
-<<< 내 풀이 >>>
-
-class Solution {
-    public int solution(String ineq, String eq, int n, int m) {
-        int answer = 0;
-        if(eq.charAt(0) == "=".charAt(0)) {
-            if(ineq.charAt(0) == "<".charAt(0) && n <= m) {
-                answer = 1;
-            } else if(ineq.charAt(0) == ">".charAt(0) && n >= m) {
-                answer = 1;
-            }
-        } else {
-            if(ineq.charAt(0) == "<".charAt(0) && n < m) {
-                answer = 1;
-            } else if(ineq.charAt(0) == ">".charAt(0) && n > m) {
-                answer = 1;
-            }
-        }
-        return answer;
-    }
-}
-
-
-
-<<< 다른 사람의 풀이 >>>
-
-class Solution {
-    public int solution(String ineq, String eq, int n, int m) {
-        boolean answer = false;
-        if (ineq.equals(">") && eq.equals("="))
-            answer = n >= m;
-        else if (ineq.equals("<") && eq.equals("="))
-            answer = n <= m;
-        else if (ineq.equals(">") && eq.equals("!"))
-            answer = n > m;
-        else 
-            answer = n < m;
-        return answer ? 1 : 0;
-    }
-}
-
-(처음에 eq == "=" 로 했다가 if문 안으로 들어가지 않아서 당황했다)
-
-(숫자는 == 로 비교해도 되지만 문자열은 equals() 로 비교하라고 하셨던 선생님의 말씀이 기억났지만 s 를 빠뜨려서 오류가 났고, 결국 charAt() 으로 풀었다)
-
-==================================================
-
 flag에 따라 다른 값 반환하기
 
 <<< 문제 설명 >>>
