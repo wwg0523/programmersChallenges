@@ -19,53 +19,6 @@ public class Solution {
 
 ==================================================
 
-문자열 반복해서 출력하기
-
-<<< 입출력 예 >>>
-
-입력 #1
-string 5
-
-출력 #1
-stringstringstringstringstring
-
-
-
-<<< 내 풀이 >>>
-
-import java.util.Scanner;
-
-public class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        int n = sc.nextInt();
-        
-        for(int i = 0; i < n; i++) {
-            System.out.print(str);
-        }
-    }
-}
-
-
-
-<<< 다른 사람의 풀이 >>>
-
-import java.util.Scanner;
-
-public class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        int n = sc.nextInt();
-        System.out.println(str.repeat(n));
-    }
-}
-
-(여기까진 자신감이 넘쳐서 하루에 8문제를 할까 오늘은 4문제만 할까 고민하고 있었다)
-
-==================================================
-
 대소문자 바꿔서 출력하기
 
 <<< 입출력 예 >>>
