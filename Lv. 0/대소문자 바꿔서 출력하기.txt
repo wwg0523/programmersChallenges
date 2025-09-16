@@ -1,0 +1,92 @@
+대소문자 바꿔서 출력하기
+
+<<< 입출력 예 >>>
+
+입력 #1
+aBcDeFg
+
+출력 #1
+AbCdEfG
+
+
+
+<<< 내 풀이 >>>
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        
+        int b = a.length();
+        
+        for(int i = 0; i < b; i++) {
+            int c = a.codePointAt(i);
+
+            if(c <= "Z".codePointAt(0)) {
+                c = c + ("a".codePointAt(0) - "A".codePointAt(0));
+            } else {
+                c = c - ("a".codePointAt(0) - "A".codePointAt(0));
+            }
+
+            String d = new String(Character.toChars(c));
+
+            System.out.print(d);
+        }
+    }
+}
+
+
+
+<<< 다른 사람의 풀이 >>>
+
+1)
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        for(int i=0; i<a.length(); i++) {
+            char c = a.charAt(i);
+            if(Character.isUpperCase(c)) {
+                System.out.print((char)(c+32));
+            }
+            else {
+                System.out.print((char)(c-32));
+            }
+        }
+    }
+}
+
+2)
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String answer = "";
+
+        //Stack <Character> stack = new Stack <> ();
+
+        for(Character c : a.toCharArray()){
+            if(Character.isUpperCase(c)){
+                //stack.push(Character.toLowerCase(c));
+                answer += Character.toLowerCase(c);
+            }
+            else if(Character.isLowerCase(c)){
+                //stack.push(Character.toUpperCase(c));
+                answer += Character.toUpperCase(c);
+            }
+        } 
+        System.out.println(answer);
+    }
+}
+
+(toUpperCase() 와 codeAt() ? charAt() ? 을 어떻게 쓰는지 도저히 감이 안 와서 결국 검색한 문제)
+
+(다른 사람의 풀이 1 이 내가 작성하고 싶었던 코드와 가장 비슷했고, 2 는 isUpperCase() 라는 코드가 있어서 가져와봤다)
+
+(이걸 오래 걸렸다는 게 너무 기분 나빠서 즐겨찾기까지 해놨다 학원에서 비슷한 문제를 풀었던 기억이 있어서 꼭 다시 봐야 하는 문제)
