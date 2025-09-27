@@ -39,37 +39,6 @@ class Solution {
 
 ==================================================
 
-문자열 섞기
-
-<<< 제한사항 >>>
-
-1 ≤ str1의 길이 = str2의 길이 ≤ 10
-str1과 str2는 알파벳 소문자로 이루어진 문자열입니다.
-
-<<< 입출력 예 >>>
-
-str1	str2	result
-"aaaaa"	"bbbbb"	"ababababab"
-
-
-
-<<< 내 풀이 >>>
-
-class Solution {
-    public String solution(String str1, String str2) {
-        String a = "";
-        for(int i = 0; i < str1.length(); i++) {
-            a += str1.substring(i, i+1) + str2.substring(i, i+1);
-        }
-        String answer = a;
-        return answer;
-    }
-}
-
-(제한사항을 안 보고 str1 과 str2 의 길이를 비교할 뻔했다)
-
-==================================================
-
 문자 리스트를 문자열로 변환하기
 
 <<< 입출력 예 >>>
