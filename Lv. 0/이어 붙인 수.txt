@@ -1,5 +1,3 @@
-【 2025.07.30 】
-
 이어 붙인 수
 
 <<< 문제 설명 >>>
@@ -71,7 +69,3 @@ class Solution {
         return answer;
     }
 }
-
-(Integer 는 생각했는데 parseInt() 를 까먹었었다)
-
-(제한사항이 있어서 String 이 아닌 int 로도 가능한 코드를 가져와봤다)
